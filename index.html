@@ -17,11 +17,27 @@
         video {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <a href="https://mikkelsen.ninja">
-<video src="panzerpandaLogo.mp4" autoplay loop muted></video></a>
+    <a>
+        <video id="panzerVideo" src="panzerpandaLogo.mp4" autoplay loop muted></video>
+    </a>
+    <script>
+        const video = document.getElementById('panzerVideo');
+        video.addEventListener('click', () => {
+            video.src = 'panzerpandaLogoOut.mp4';
+            video.loop = false;
+            video.muted = false;
+            video.play();
+
+            // Navigate to the link after the video ends
+            video.onended = () => {
+                window.location.href = 'https://mikkelsen.ninja';
+            };
+        });
+    </script>
 </body>
 </html>
