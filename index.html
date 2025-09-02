@@ -19,16 +19,23 @@
             height: auto;
             cursor: pointer;
         }
+        #preloadVideo {
+            display: none; /* Hide the preloaded video */
+        }
     </style>
 </head>
 <body>
     <a>
         <video id="panzerVideo" src="panzerpandaLogo.mp4" autoplay loop muted></video>
     </a>
+    <!-- Preload the "out" video -->
+    <video id="preloadVideo" src="panzerpandaLogoOut.mp4" preload="auto"></video>
     <script>
         const video = document.getElementById('panzerVideo');
+        const preloadVideo = document.getElementById('preloadVideo');
+
         video.addEventListener('click', () => {
-            video.src = 'panzerpandaLogoOut.mp4';
+            video.src = preloadVideo.src; // Use the preloaded video source
             video.loop = false;
             video.muted = false;
             video.play();
